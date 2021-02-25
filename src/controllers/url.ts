@@ -74,10 +74,13 @@ export const shortenUrl = async (req: Request, res: Response) => {
 export const getLongUrl = async (req: Request, res: Response) => {
   try {
     const existingUrl = await Url.findOne({ urlCode: req.params.code });
-    if (existingUrl) {
+    if (!existingUrl) {
+      return res.status(404).json("No url found");
+    }
+    if (existingUrl.longUrl.startsWith("http")) {
       return res.redirect(existingUrl.longUrl);
     } else {
-      return res.status(404).json("No url found");
+      return res.redirect(`http://${existingUrl.longUrl}`);
     }
   } catch (error) {
     console.error(error);
