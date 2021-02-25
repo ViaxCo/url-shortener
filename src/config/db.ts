@@ -2,7 +2,9 @@ import mongoose from "mongoose";
 
 // Use a different database depending on the environment
 const db =
-  process.env.NODE_ENV === "test" ? "urlShortenerTestDB" : "urlShortenerDB";
+  process.env.NODE_ENV === "test"
+    ? process.env.DB_TEST_NAME
+    : process.env.DB_NAME;
 
 // Use a different uri depending on the environment
 const uri =
