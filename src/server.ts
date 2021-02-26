@@ -9,7 +9,7 @@ import cors from "cors";
 const app = express();
 
 // Connect to Database
-connectDB();
+if (process.env.NODE_ENV !== "test") connectDB();
 
 // Middlewares
 app.use(cors());

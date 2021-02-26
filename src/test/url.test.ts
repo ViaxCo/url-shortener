@@ -1,6 +1,11 @@
 //During the test the NODE_ENV variable is set to test
 process.env.NODE_ENV = "test";
 
+import mongoose from "mongoose";
+// In-memory MongoDB database for testing
+import { MongoMemoryServer } from "mongodb-memory-server";
+let mongoServer: MongoMemoryServer;
+
 import { Url } from "../models/Url";
 
 import chai from "chai";
@@ -16,14 +21,21 @@ describe("Url", () => {
   let urlCode: string;
 
   before(async () => {
-    //Before the test starts, empty the database
-    await Url.deleteMany({});
-    console.log("Test started...database cleared");
+    // Initiate connection to databse
+    mongoServer = new MongoMemoryServer();
+    const uri = await mongoServer.getUri();
+    const conn = await mongoose.connect(uri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log(`CONNECTED to database on: ${conn.connection.host}`);
   });
 
   after(async () => {
-    // After the test ends, delete the database
+    // After the test ends, drop the databse and disconnect from it
     await Url.db.dropDatabase();
+    await mongoose.disconnect();
+    await mongoServer.stop();
     console.log("Test ended...database deleted");
   });
 

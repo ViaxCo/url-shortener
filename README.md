@@ -22,19 +22,10 @@ npm install
 
 ```
 MONGO_URI=
-MONGO_TEST_URI=
-DB_NAME=
-DB_TEST_NAME=
 BASE_URL=http://localhost:5000
 ```
 
 - `MONGO_URI` is the uri for your MongoDB database.
-
-- `MONGO_TEST_URI` is the uri for your MongoDB database to be used for testing. (The user of this database should be an admin with privileges to drop the database for cleanup)
-
-- `DB_NAME` is the name of your MongoDB database
-
-- `DB_TEST_NAME` is the name of your MongoDB test database.
 
 - `BASE_URL` is the url of the domain that the server runs on, and for development, it should be `http://localhost:5000`
 
