@@ -15,17 +15,14 @@ interface ReqBody {
  */
 export const shortenUrl = async (req: Request, res: Response) => {
   const { longUrl }: ReqBody = req.body;
-  const baseUrl = process.env.BASE_URL;
+  // Get the hostname of the server
+  const host = req.headers.host;
+  // Use it to construct a baseUrl
+  const baseUrl =
+    process.env.NODE_ENV !== "production"
+      ? `http://${host}`
+      : `https://${host}`;
 
-  // If baseUrl is not set
-  if (!baseUrl) {
-    return res.status(401).json("Internal error, base url not found");
-  }
-  // If baseUrl is not valid
-  // require_tld: false allows "http://localhost:5000" as valid url
-  if (!isUrl(baseUrl, { require_tld: false })) {
-    return res.status(401).json("Internal error, invalid base url");
-  }
   // If long url is not found
   if (!longUrl) {
     return res.status(400).json("No long url found");

@@ -18,16 +18,13 @@ git clone https://github.com/ViaxCo/spleet-url-shortener.git
 npm install
 ```
 
-**Create a `.env` file in the root of the project for these environment variables:**
+**Create a `.env` file in the root of the project for this environment variable:**
 
 ```
 MONGO_URI=
-BASE_URL=http://localhost:5000
 ```
 
 - `MONGO_URI` is the uri for your MongoDB database.
-
-- `BASE_URL` is the url of the domain that the server runs on, and for development, it should be `http://localhost:5000`
 
 ### To run the server in development
 
@@ -57,11 +54,11 @@ It should return an object that looks like this:
 }
 ```
 
-If the api was hosted on this domain: `"sh.rt"` for example, and it was also specified as the `BASE_URL`, the response would have `shortUrl` like so:
+If the api was hosted on this domain: `"sh.rt"` for example, the response would have a `shortUrl` that looks like this:
 
 ```json
 {
-  "shortUrl": "sh.rt/sRmqY44"
+  "shortUrl": "https://sh.rt/sRmqY44"
 }
 ```
 
