@@ -40,7 +40,7 @@ POST http://localhost:5000/api
 Content-Type: application/json
 
 {
-    "longUrl": "google.com"
+    "longUrl": "https://www.examplesofgreatposts.com/2021/02/the--greate-and-ever-changing-effect-of-covid-in-todays-educational-system-in-nigeria-taiwo-chinedu-yusuf"
 }
 ```
 
@@ -49,7 +49,7 @@ It should return an object that looks like this:
 ```json
 {
   "urlCode": "sRmqY44",
-  "longUrl": "google.com",
+  "longUrl": "https://www.examplesofgreatposts.com/2021/02/the--greate-and-ever-changing-effect-of-covid-in-todays-educational-system-in-nigeria-taiwo-chinedu-yusuf",
   "shortUrl": "http://localhost:5000/sRmqY44"
 }
 ```
