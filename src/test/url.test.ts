@@ -3,7 +3,7 @@ process.env.NODE_ENV = "test";
 
 import mongoose from "mongoose";
 // In-memory MongoDB database for testing
-import { MongoMemoryServer } from "mongodb-memory-server";
+import { MongoMemoryServer } from "mongodb-memory-server-core";
 let mongoServer: MongoMemoryServer;
 
 import { Url } from "../models/Url";

@@ -88,6 +88,8 @@ The test is run with mocha.
 
 - `--exit` to exit after the test is completed.
 
+The test uses an in-memory MongoDB server, therefore, before the test starts, the `mongodb-memory-server-core` package downloads the latest MongoDB binaries and saves them to a cache folder in `./node_modules`.
+
 ### To build for production
 
 ```bash
