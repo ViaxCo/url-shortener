@@ -1,6 +1,6 @@
 # spleet-url-shortener
 
-This is an api that shortens the provided url.
+This is an API that shortens the provided url.
 
 ## Get started
 
@@ -54,7 +54,7 @@ It should return an object that looks like this:
 }
 ```
 
-If the api was hosted on this domain: `"sh.rt"` for example, the response would have a `shortUrl` that looks like this:
+If the API was hosted on this domain: `"sh.rt"` for example, the response would have a `shortUrl` that looks like this:
 
 ```json
 {
@@ -84,7 +84,7 @@ The test is run with mocha.
 
 - Running with `dotenv/config` to load environment variables.
 
-- Running with `--timeout 10000` to allow for the test to wait for a delay of 10 seconds before failing if the test takes too long. This is necessary because of connections to a remote database.
+- Running with `--timeout 10000` to allow for the test to wait for a delay of 10 seconds before failing if the test takes too long.
 
 - `--exit` to exit after the test is completed.
 
@@ -94,6 +94,8 @@ The test is run with mocha.
 npm run build
 ```
 
-- Live implementation of the api: [Spleet Shorten](https://spleet-shorten.herokuapp.com/)
+- Live implementation of the API: [Spleet Shorten](https://spleet-shorten.herokuapp.com/)
 
-- Demo of the api with a frontend application: [Url Shortener](https://viaxco-spleet-url-shortener.netlify.app/)
+- API Documentation: [Spleet URL Shortener](https://documenter.getpostman.com/view/13046478/TWDdiDK5)
+
+- Demo of the API with a frontend application: [Url Shortener](https://viaxco-spleet-url-shortener.netlify.app/)
