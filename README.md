@@ -74,21 +74,19 @@ This runs the script:
 
 ```json
 {
-  "test": "mocha -r ts-node/register -r dotenv/config ./src/test/**/*.test.ts --timeout 10000 --exit"
+  "test": "mocha -r ts-node/register -r dotenv/config ./src/test/**/*.test.ts --timeout 600000 --exit"
 }
 ```
 
-The test is run with mocha.
+The test is run with mocha and it uses an in-memory MongoDB server to mock the database, therefore, before the test starts, the `mongodb-memory-server-core` package downloads the latest MongoDB binaries and saves them to a cache folder in `./node_modules`.
 
 - Running with `ts-node/register` because the test file is written in typescript.
 
 - Running with `dotenv/config` to load environment variables.
 
-- Running with `--timeout 10000` to allow for the test to wait for a delay of 10 seconds before failing if the test takes too long.
+- Running with `--timeout 600000` to allow for the test to wait for a delay of 10 minutes before failing if the test takes too long.(This is needed to allow the MongoDB binaries to download on slow connections)
 
 - `--exit` to exit after the test is completed.
-
-The test uses an in-memory MongoDB server, therefore, before the test starts, the `mongodb-memory-server-core` package downloads the latest MongoDB binaries and saves them to a cache folder in `./node_modules`.
 
 ### To build for production
 

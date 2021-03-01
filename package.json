@@ -8,7 +8,7 @@
     "postinstall": "npm run build",
     "start": "node ./build/server.js",
     "dev": "nodemon ./src/server.ts",
-    "test": "mocha -r ts-node/register -r dotenv/config ./src/test/**/*.test.ts --timeout 10000 --exit"
+    "test": "mocha -r ts-node/register -r dotenv/config ./src/test/**/*.test.ts --timeout 600000 --exit"
   },
   "keywords": [],
   "author": "Victor Ajibade",
