@@ -8,7 +8,7 @@ interface ReqBody {
 }
 
 /**
- * Shortens a url and returns an object containing the long url, short url and url code
+ * Shortens a url and returns an object containing the short url and url code
  * @route POST "/api"
  * @param req
  * @param res
@@ -18,10 +18,7 @@ export const shortenUrl = async (req: Request, res: Response) => {
   // Get the hostname of the server
   const host = req.headers.host;
   // Use it to construct a baseUrl
-  const baseUrl =
-    process.env.NODE_ENV !== "production"
-      ? `http://${host}`
-      : `https://${host}`;
+  const baseUrl = process.env.NODE_ENV !== "production" ? `http://${host}` : `https://${host}`;
 
   // If long url is not found
   if (!longUrl) {
@@ -35,25 +32,29 @@ export const shortenUrl = async (req: Request, res: Response) => {
   try {
     const existingUrl = await Url.findOne({ longUrl });
     if (existingUrl) {
-      const { urlCode, longUrl, shortUrl } = existingUrl;
+      const { urlCode } = existingUrl;
       return res.status(200).json({
         urlCode,
-        longUrl,
-        shortUrl,
+        shortUrl: `${baseUrl}/${urlCode}`,
       });
     } else {
-      const urlCode = nanoid(7);
-      const shortUrl = `${baseUrl}/${urlCode}`;
+      // Check if urlCode already exists
+      let urlCode = "";
+      while (!urlCode) {
+        const newUrlCode = nanoid(7);
+        const urlExists = await Url.findOne({ urlCode: newUrlCode });
+        if (!urlExists) {
+          urlCode = newUrlCode;
+        }
+      }
       const newUrl = new Url({
         urlCode,
         longUrl,
-        shortUrl,
       });
       await newUrl.save();
-      return res.status(201).json({
+      return res.status(200).json({
         urlCode,
-        longUrl,
-        shortUrl,
+        shortUrl: `${baseUrl}/${urlCode}`,
       });
     }
   } catch (error) {

@@ -10,7 +10,7 @@ import { Url } from "../models/Url";
 
 import chai from "chai";
 import chaiHttp from "chai-http";
-import server from "../server";
+import app from "../app";
 
 chai.should();
 chai.use(chaiHttp);
@@ -34,7 +34,7 @@ describe("Url", () => {
   after(async () => {
     // After the test ends, drop the databse and disconnect from it
     await Url.db.dropDatabase();
-    await mongoose.disconnect();
+    await Url.db.close();
     await mongoServer.stop();
     console.log("Test ended...database deleted");
   });
@@ -43,28 +43,29 @@ describe("Url", () => {
   describe("POST /api", () => {
     it("It should create a new short url", done => {
       chai
-        .request(server)
+        .request(app)
         .post("/api")
         .send({ longUrl: validLongUrl })
         .end((err, res) => {
-          res.should.have.status(201);
+          res.should.have.status(200);
           urlCode = res.body.urlCode;
           done();
         });
     });
     it("It should return an existing short url", done => {
       chai
-        .request(server)
+        .request(app)
         .post("/api")
         .send({ longUrl: validLongUrl })
         .end((err, res) => {
           res.should.have.status(200);
+          res.body.urlCode.should.be.equal(urlCode);
           done();
         });
     });
     it("It should not create a short url with an invalid long url", done => {
       chai
-        .request(server)
+        .request(app)
         .post("/api")
         .send({ longUrl: "https://twittercom" })
         .end((err, res) => {
@@ -79,7 +80,7 @@ describe("Url", () => {
   describe("GET /:code", () => {
     it("It should redirect to the long url", done => {
       chai
-        .request(server)
+        .request(app)
         .get(`/${urlCode}`)
         .redirects(0)
         .end((err, res) => {
@@ -90,7 +91,7 @@ describe("Url", () => {
     });
     it("It should return error if url not found for given code", done => {
       chai
-        .request(server)
+        .request(app)
         .get("/invalid-code")
         .end((err, res) => {
           res.should.have.status(404);

@@ -49,7 +49,6 @@ It should return an object that looks like this:
 ```json
 {
   "urlCode": "sRmqY44",
-  "longUrl": "https://www.examplesofgreatposts.com/2021/02/the--greate-and-ever-changing-effect-of-covid-in-todays-educational-system-in-nigeria-taiwo-chinedu-yusuf",
   "shortUrl": "http://localhost:5000/sRmqY44"
 }
 ```
@@ -74,7 +73,7 @@ This runs the script:
 
 ```json
 {
-  "test": "mocha -r ts-node/register -r dotenv/config ./src/test/**/*.test.ts --timeout 600000 --exit"
+  "test": "mocha -r ts-node/register -r dotenv/config ./src/test/**/*.test.ts --timeout 600000"
 }
 ```
 
@@ -85,8 +84,6 @@ The test is run with mocha and it uses an in-memory MongoDB server to mock the d
 - Running with `dotenv/config` to load environment variables.
 
 - Running with `--timeout 600000` to allow for the test to wait for a delay of 10 minutes before failing if the test takes too long.(This is needed to allow the MongoDB binaries to download on slow connections)
-
-- `--exit` to exit after the test is completed.
 
 ### To build for production
 
