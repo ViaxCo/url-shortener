@@ -1,4 +1,4 @@
-# spleet-url-shortener
+# url-shortener
 
 This is an API that shortens the provided url.
 
@@ -9,7 +9,7 @@ This is an API that shortens the provided url.
 **You can clone the project:**
 
 ```bash
-git clone https://github.com/ViaxCo/spleet-url-shortener.git
+git clone https://github.com/ViaxCo/url-shortener.git
 ```
 
 **Install dependencies:**
@@ -91,8 +91,8 @@ The test is run with mocha and it uses an in-memory MongoDB server to mock the d
 npm run build
 ```
 
-- Live implementation of the API: [Spleet Shorten](https://spleet-shorten.herokuapp.com/)
+- Live implementation of the API: [Shorten](https://viaxco-shorten.herokuapp.com/)
 
-- API Documentation: [Spleet URL Shortener](https://documenter.getpostman.com/view/13046478/TWDdiDK5)
+- API Documentation: [URL Shortener](https://documenter.getpostman.com/view/13046478/TWDdiDK5)
 
-- Demo of the API with a frontend application: [Url Shortener](https://viaxco-spleet-url-shortener.netlify.app/)
+- Demo of the API with a frontend application: [Url Shortener](https://viaxco-url-shortener.netlify.app/)
