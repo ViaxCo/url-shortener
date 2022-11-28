@@ -91,7 +91,7 @@ The test is run with mocha and it uses an in-memory MongoDB server to mock the d
 npm run build
 ```
 
-- Live implementation of the API: [Shorten](https://viaxco-shorten.herokuapp.com/)
+- Live implementation of the API: [Shorten](https://viaxco-shorten.onrender.com/)
 
 - API Documentation: [URL Shortener](https://documenter.getpostman.com/view/13046478/TWDdiDK5)
 
