@@ -40,7 +40,7 @@ POST http://localhost:5000/api
 Content-Type: application/json
 
 {
-    "longUrl": "https://www.examplesofgreatposts.com/2021/02/the--greate-and-ever-changing-effect-of-covid-in-todays-educational-system-in-nigeria-taiwo-chinedu-yusuf"
+    "longUrl": "https://www.google.com/search?q=url&rlz=1C5CHFA_enNG999NG999&oq=url&aqs=chrome..69i57j35i39l2j0i433i512j0i512j69i60l3.1212j0j9&sourceid=chrome&ie=UTF-8"
 }
 ```
 
